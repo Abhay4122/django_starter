@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from promo.admin import promo_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('promo_admin/', promo_site.urls),
 ]
 
-# could be change
-admin.site.index_title = 'demo'
-admin.site.site_header = 'demo Panel'
-admin.site.site_title = 'demo site Title'
+# # could be change
+# admin.site.index_title = 'demo'
+# admin.site.site_header = 'demo Panel'
+# admin.site.site_title = 'demo site Title'
 
 if settings.DEBUG:
     import debug_toolbar

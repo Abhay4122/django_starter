@@ -3,10 +3,10 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    help = 'This command will rename the Django project'
+    help = 'python manage.py rename_project <current> <new>'
 
     def add_arguments(self, parser):
-        parser.add_argument('current', type=str, nargs='+', help='The current Django project folder name')
+        parser.add_argument('current', type=str, nargs='+', help='The current Django project name')
         parser.add_argument('new', type=str, nargs='+', help='The new Django project name')
     
     def handle(self, *args, **kwargs):
