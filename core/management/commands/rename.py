@@ -19,6 +19,7 @@ class Command(BaseCommand):
             f'{current_project_name}/settings.py',
             f'{current_project_name}/wsgi.py',
             f'{current_project_name}/asgi.py',
+            f'{current_project_name}/urls.py',
             'manage.py'
         ]
 

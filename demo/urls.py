@@ -21,6 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+# could be change
+admin.site.index_title = 'demo'
+admin.site.site_header = 'demo Panel'
+admin.site.site_title = 'demo site Title'
+
 if settings.DEBUG:
     import debug_toolbar
     from django.conf.urls.static import static
