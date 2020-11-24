@@ -23,10 +23,10 @@ urlpatterns = [
     path('promo_admin/', promo_site.urls),
 ]
 
-# # could be change
-# admin.site.index_title = 'demo'
-# admin.site.site_header = 'demo Panel'
-# admin.site.site_title = 'demo site Title'
+# could be change
+admin.site.index_title = 'demo'
+admin.site.site_header = 'demo Panel'
+admin.site.site_title = 'demo site Title'
 
 if settings.DEBUG:
     import debug_toolbar
