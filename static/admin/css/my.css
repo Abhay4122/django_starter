@@ -1,4 +1,4 @@
-/* Input field style */
+Input field style
 
 .fo_rm_fild{
     width: 100%; position: relative; height: 50px; overflow: hidden;
@@ -92,4 +92,49 @@
 /* active state */
 .group input:focus ~ .bar:before, .group input:focus ~ .bar:after {
     width:50%;
+}
+
+
+/* Primary Color Table Style */
+.tbl_structure{
+	width: 100%; border-radius: 10px; box-shadow: 0 0 10px #ccc;
+}
+.tbl_structure th{
+	background-color: #00777A; padding: 12px 0; text-align: center;
+	color: #fff;
+}
+.tbl_structure th:first-child{
+	border-top-left-radius: 10px;
+}
+.tbl_structure th:last-child{
+	border-top-right-radius: 10px;
+}
+.tbl_structure tbody tr:nth-child(even){
+	background-color: rgba(0,119,122,.1);
+}
+.tbl_structure tbody tr td{
+	text-align: center; padding: 12px 0; color: #000; font-weight: 600;
+}
+.tbl_structure tbody tr:last-child td:first-child{
+	border-bottom-left-radius: 10px;
+}
+.tbl_structure tbody tr:last-child td:last-child{
+	border-bottom-right-radius: 10px;
+}
+
+/* Primary Color Table Style */
+.tbl_light{
+	width: 100%; box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+}
+.tbl_light th{
+	background-color: rgba(0,0,0,.1); padding: 15px 0; text-align: center;
+	color: #000;
+}
+
+.tbl_light tbody tr td{
+	text-align: center; padding: 12px 0; color: #000; font-weight: 600;
+}
+
+select {
+    width: 100%;
 }

@@ -4,7 +4,6 @@ from django.db import models
 
 class Post(models.Model):
     title = models.CharField(max_length=100, help_text='This is the Title')
-    slug = models.SlugField(max_length=100, unique_for_date='date')
     date = models.DateField(auto_now_add=True)
 
     class Meta:

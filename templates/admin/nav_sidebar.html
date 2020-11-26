@@ -1,5 +1,6 @@
 {% load i18n %}
-<button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="{% translate 'Toggle navigation' %}"></button>
+{% load static %}
+<button class="toggle-nav-sidebar btn btn-outline-secondary" id="toggle-nav-sidebar" aria-label="{% translate 'Toggle navigation' %}"><img src="{% static 'admin/img/menu.png' %}" width="30px" alt=""></button>
 <nav class="sticky" id="nav-sidebar">
   {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %}
 </nav>

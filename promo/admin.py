@@ -30,15 +30,13 @@ promo_site.register(Post)
 
 @admin.register(Post) # OR 1
 class PostAdmin(admin.ModelAdmin):
+    list_display = ['title', 'date']
+    list_filter = ('date',)
     fieldsets = (
         ('Section 1', {
             'fields': ('title', ),
             'description': 'Text about section 1',
         }),
-        ('Section 2', {
-            'fields': ('slug', ),
-            'classes': ('collapse', )
-        })
     )
     # fields = ['title']
 
@@ -46,13 +44,13 @@ class PostAdmin(admin.ModelAdmin):
 # admin.site.register(PostAdmin) # OR 1
 
 
-models = django.apps.apps.get_models()
+# models = django.apps.apps.get_models()
 
-for model in models:
-    try:
-        admin.site.register(model)
-    except admin.sites.AlreadyRegistered:
-        pass
+# for model in models:
+#     try:
+#         admin.site.register(model)
+#     except admin.sites.AlreadyRegistered:
+#         pass
 
 # # unregister the models
 # admin.site.unregister(django.contrib.admin.models.LogEntry)

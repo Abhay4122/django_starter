@@ -1,10 +1,20 @@
 {% load i18n %}
 
+{% block extrastyle %}
+
+<style>
+  table caption {
+    border-top-left-radius: 10px; border-top-right-radius: 10px;
+  }
+</style>
+
+{% endblock %}
+
 {% if app_list %}
   {% for app in app_list %}
     <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
       <table>
-        <caption>
+        <caption class="bg-secondary">
           <a href="{{ app.app_url }}" class="section" title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</a>
         </caption>
         {% for model in app.models %}

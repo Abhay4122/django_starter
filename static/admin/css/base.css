@@ -613,7 +613,7 @@ div.breadcrumbs {
     border: none;
     font-size: 14px;
     color: #c4dce8;
-    text-align: left;
+    text-align: right;
 }
 
 div.breadcrumbs a {
@@ -681,7 +681,7 @@ a.deletelink:focus, a.deletelink:hover {
     height: 16px;
 }
 
-.object-tools a {
+/* .object-tools a {
     border-radius: 15px;
 }
 
@@ -703,7 +703,7 @@ a.deletelink:focus, a.deletelink:hover {
 
 .object-tools a:focus{
     text-decoration: none;
-}
+} */
 
 .object-tools a.viewsitelink, .object-tools a.golink,.object-tools a.addlink {
     background-repeat: no-repeat;
@@ -921,7 +921,7 @@ table#change-history tbody th {
     color: #333;
 }
 
-.delete-confirmation form input[type="submit"] {
+/* .delete-confirmation form input[type="submit"] {
     background: #ba2121;
     border-radius: 4px;
     padding: 10px 15px;
@@ -950,7 +950,7 @@ table#change-history tbody th {
 .delete-confirmation form .cancel-link:focus,
 .delete-confirmation form .cancel-link:hover {
     background: #ccc;
-}
+} */
 
 /* POPUP */
 .popup #content {
