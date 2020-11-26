@@ -82,5 +82,5 @@
 /* style for login background */
 
 .login .shifted{
-    background: url();
+    background: url('/static/admin/img/wave.svg') right bottom no-repeat, url('/static/admin/img/wave2.svg') left bottom no-repeat;
 }
