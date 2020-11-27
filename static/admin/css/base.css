@@ -423,7 +423,7 @@ select[multiple] {
 
 /* FORM BUTTONS */
 
-.button, input[type=submit], input[type=button], .submit-row input, a.button {
+/* .button, input[type=submit], input[type=button], .submit-row input, a.button {
     background: #79aec8;
     padding: 10px 15px;
     border: none;
@@ -463,7 +463,7 @@ a.button {
 input[type=submit][disabled].default,
 input[type=button][disabled].default {
     opacity: 0.4;
-}
+} */
 
 
 /* MODULES */
@@ -514,7 +514,7 @@ input[type=button][disabled].default {
 
 /* MESSAGES & ERRORS */
 
-ul.messagelist {
+/* ul.messagelist {
     padding: 0;
     margin: 0;
 }
@@ -538,7 +538,7 @@ ul.messagelist li.warning {
 ul.messagelist li.error {
     background: #ffefef url(../img/icon-no.svg) 40px 12px no-repeat;
     background-size: 16px auto;
-}
+} */
 
 .errornote {
     font-size: 14px;
@@ -753,6 +753,7 @@ table#change-history tbody th {
 .main > .content {
     flex:  1 0;
     max-width: 100%;
+    transition: 1s;
 }
 
 #content {

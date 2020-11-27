@@ -32,12 +32,13 @@ promo_site.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'date']
     list_filter = ('date',)
-    fieldsets = (
-        ('Section 1', {
-            'fields': ('title', ),
-            'description': 'Text about section 1',
-        }),
-    )
+    search_fields = ('title',)
+    # fieldsets = (
+    #     ('Section 1', {
+    #         'fields': ('title', ),
+    #         'description': 'Text about section 1',
+    #     }),
+    # )
     # fields = ['title']
 
 # admin.site.register(Post) # OR 1

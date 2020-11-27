@@ -6,7 +6,7 @@
 
 .toggle-nav-sidebar {
     position: absolute;
-    top: 54px;
+    top: 59px;
     left: 5px;
     z-index: 20;
     display: flex;
@@ -43,6 +43,7 @@
     border-right: 1px solid #eaeaea;
     background-color: #ffffff;
     overflow: auto;
+    transition: 1s;
 }
 
 [dir="rtl"] #nav-sidebar {
@@ -124,6 +125,6 @@
 
 @media (max-width: 1024px) {
     .toggle-nav-sidebar{
-        top: 88px
+        top: 93px
     }
 }

@@ -70,8 +70,8 @@
 			</div>
 			<!-- END Header -->
 			{% block breadcrumbs %}
-				<div class="breadcrumbs">
-					<a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+				<div class="alert alert-info text-right">
+					<a href="{% url 'admin:index' %}" class="alert-link">{% translate 'Home' %}</a>
 					{% if title %} &rsaquo; {{ title }}{% endif %}
 				</div>
 			{% endblock %}
@@ -86,11 +86,14 @@
 			<div class="content">
 				{% block messages %}
 					{% if messages %}
-					<ul class="messagelist">
 						{% for message in messages %}
-							<li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message|capfirst }}</li>
+							<div class="m-2 alert alert-{% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+								{{ message|capfirst }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
 						{% endfor %}
-					</ul>
 					{% endif %}
 				{% endblock messages %}
 				<!-- Content -->

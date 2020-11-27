@@ -2,8 +2,8 @@
 {% load i18n %}
 
 {% block breadcrumbs %}
-<div class="breadcrumbs">
-<a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+<div class="alert alert-info text-right">
+<a href="{% url 'admin:index' %}" class="alert-link">{% translate 'Home' %}</a>
 &rsaquo; {% translate 'Server error' %}
 </div>
 {% endblock %}
