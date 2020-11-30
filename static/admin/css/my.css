@@ -138,3 +138,13 @@ Input field style
 select {
     width: 100%;
 }
+
+.box-shadow{
+    box-shadow: 2px 2px 15px #ccc; border-radius: 10px; padding: 25px 10px;
+}
+
+@media (max-width: 1024px) {
+    #changelist-filter{
+        display: none;
+    }
+}

@@ -56,11 +56,11 @@
 }
 
 /* .toggle-nav-sidebar::before {
-    content: '\00BB';
+    background: url('../img/left.png');
 }
 
 .main.shifted .toggle-nav-sidebar::before {
-    content: '\00AB';
+    background: url('../img/right.png');
 } */
 
 .main.shifted > #nav-sidebar {
@@ -96,12 +96,12 @@
 
 #nav-sidebar .current-app .section:link,
 #nav-sidebar .current-app .section:visited {
-    color: #ffc;
+    color: #CEECF0;
     font-weight: bold;
 }
 
 #nav-sidebar .current-model {
-    background: #ffc;
+    background: #CEECF0;
 }
 
 .main > #nav-sidebar + .content {

@@ -1,7 +1,35 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">
+    <style>
+        .viewlink, .inlineviewlink {
+            padding-left: 35px;
+            background: url({% static "admin/img/icon-viewlink.svg" %}) 0 1px no-repeat;
+            background-position: 10px;
+        }
+
+        .addlink {
+            padding-left: 35px;
+            background: url({% static "admin/img/icon-addlink.svg" %}) 0 1px no-repeat;
+            background-position: 10px;
+        }
+
+        .changelink, .inlinechangelink {
+            padding-left: 35px;
+            background: url({% static "admin/img/icon-changelink.svg" %}) 0 1px no-repeat;
+            background-position: 10px;
+        }
+
+        .deletelink {
+            padding-left: 35px;
+            background: url({% static "admin/img/icon-deletelink.svg" %}) 0 1px no-repeat;
+            background-position: 10px;
+        }
+    </style>
+{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
@@ -28,7 +56,7 @@
                             {% else %}
                                 </li>
                                 {% for entry in admin_log %}
-                                    <li class="list-group-item {% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                                    <li class="list-group-item py-1 {% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
                                         {% if entry.is_deletion or not entry.get_admin_url %}
                                             {{ entry.object_repr }}
                                             {% else %}
@@ -36,9 +64,9 @@
                                         {% endif %}
                                         <br>
                                         {% if entry.content_type %}
-                                            <span class="mini quiet">{% filter capfirst %}{{ entry.content_type.name }}{% endfilter %}</span>
+                                            <h6 class="mini quiet text-right">{% filter capfirst %}{{ entry.content_type.name }}{% endfilter %}</h6>
                                             {% else %}
-                                                <span class="mini quiet">{% translate 'Unknown content' %}</span>
+                                                <h6 class="mini quiet text-right">{% translate 'Unknown content' %}</h6>
                                         {% endif %}
                                     </li>
                                 {% endfor %}

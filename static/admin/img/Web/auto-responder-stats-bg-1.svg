@@ -1,0 +1,25 @@
+<svg width="1920" height="1147" viewBox="0 0 1920 1147" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M469.096 364.405C401.402 375.557 280 236.319 141 265.319C141 265.319 -18.9251 318.156 -126.714 380.871C-181.03 412.473 -145.716 440.696 -145.716 440.696V1013.5L94.5 1046L469.096 961.13L1143.31 1029.82L1659.5 1147L2015 961.13L2216.1 461.733C2216.1 461.733 2330.09 340.256 2238.19 340.256C2146.28 340.256 2347.95 275.399 2246.5 270.819C2145.05 266.24 1947.5 146.338 1719 84.3196C1490.5 22.3011 1254.81 321.594 1143.31 290.309C1042.74 289.953 940.921 194.26 794 207.32C681.5 217.319 566.386 348.378 469.096 364.405Z" fill="url(#paint0_linear)"/>
+<line x1="112" y1="189" x2="112" y2="737" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="235" y1="280" x2="235" y2="828" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="368" y1="352" x2="368" y2="900" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="482" y1="339" x2="482" y2="887" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="571" y1="216" x2="571" y2="764" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="678" y1="255" x2="678" y2="803" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="840" y1="210" x2="840" y2="758" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="949" y1="233" x2="949" y2="781" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1058" y1="515" x2="1058" y2="1063" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1167" y1="210" x2="1167" y2="758" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1276" y1="175" x2="1276" y2="723" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1385" y1="140" x2="1385" y2="688" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1494" y1="105" x2="1494" y2="653" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1603" y1="85" x2="1603" y2="633" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1712" y1="35" x2="1712" y2="583" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<line x1="1821" y1="4.37114e-08" x2="1821" y2="548" stroke="white" stroke-width="2" stroke-dasharray="20 20"/>
+<defs>
+<linearGradient id="paint0_linear" x1="937.241" y1="104.763" x2="937.241" y2="718.424" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC163"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

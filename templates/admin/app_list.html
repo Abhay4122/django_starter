@@ -6,6 +6,9 @@
   table caption {
     border-top-left-radius: 10px; border-top-right-radius: 10px;
   }
+  table td a {
+    padding-right: .6em;
+  }
 </style>
 
 {% endblock %}
@@ -20,22 +23,22 @@
         {% for model in app.models %}
           <tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path %} current-model{% endif %}">
             {% if model.admin_url %}
-              <th scope="row"><a href="{{ model.admin_url }}"{% if model.admin_url in request.path %} aria-current="page"{% endif %}>{{ model.name }}</a></th>
+              <th scope="row" class="pt-3"><a href="{{ model.admin_url }}"{% if model.admin_url in request.path %} aria-current="page"{% endif %}>{{ model.name }}</a></th>
             {% else %}
-              <th scope="row">{{ model.name }}</th>
+              <th scope="row" class="pt-3">{{ model.name }}</th>
             {% endif %}
 
             {% if model.add_url %}
-              <td><a href="{{ model.add_url }}" class="btn btn-outline-success btn-sm">{% translate 'Add' %}</a></td>
+              <td><a href="{{ model.add_url }}" class="btn btn-outline-success btn-sm pr-2">{% translate 'Add' %}</a></td>
             {% else %}
               <td></td>
             {% endif %}
 
             {% if model.admin_url and show_changelinks %}
               {% if model.view_only %}
-                <td><a href="{{ model.admin_url }}" class="btn btn-outline-secondary btn-sm">{% translate 'View' %}</a></td>
+                <td><a href="{{ model.admin_url }}" class="btn btn-outline-secondary btn-sm pr-2">{% translate 'View' %}</a></td>
               {% else %}
-                <td><a href="{{ model.admin_url }}" class="btn btn-outline-info btn-sm">{% translate 'Change' %}</a></td>
+                <td><a href="{{ model.admin_url }}" class="btn btn-outline-info btn-sm pr-2">{% translate 'Change' %}</a></td>
               {% endif %}
             {% elif show_changelinks %}
               <td></td>
