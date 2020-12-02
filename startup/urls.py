@@ -1,4 +1,4 @@
-"""demo URL Configuration
+"""startup URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -16,22 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from promo.admin import promo_site
+from api.admin import api_admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('promo_admin/', promo_site.urls),
+    path('api_admin/', api_admin.urls),
+    path('api/', include('api.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 # could be change
-admin.site.index_title = 'demo'
-admin.site.site_header = 'demo Panel'
-admin.site.site_title = 'demo site Title'
+admin.site.index_title = 'startup'
+admin.site.site_header = 'startup admin panel'
+admin.site.site_title = 'startup site Title'
 
 if settings.DEBUG:
     import debug_toolbar
     from django.conf.urls.static import static
-    
+
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
     ]
