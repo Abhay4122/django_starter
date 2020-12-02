@@ -143,6 +143,15 @@ select {
     box-shadow: 2px 2px 15px #ccc; border-radius: 10px; padding: 25px 10px;
 }
 
+.module{
+    background: transparent !important;
+}
+
+.bg_ground{
+    background: url('/static/admin/img/web/footer-circle-bg.svg') right bottom no-repeat, url('/static/admin/img/web/autoresponder_video.svg') left bottom no-repeat;
+    background-size: 65%;
+}
+
 @media (max-width: 1024px) {
     #changelist-filter{
         display: none;

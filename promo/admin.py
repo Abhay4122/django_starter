@@ -41,6 +41,22 @@ class PostAdmin(admin.ModelAdmin):
     # )
     # fields = ['title']
 
+@admin.register(student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'contact', 'address')
+    actions = ('cancel_orders', )
+    ordering = ('-date', )
+    list_filter = ('dob', 'date')
+    # list_display_links = ('name', 'email', 'address')
+    # list_editable = ('contact', )
+    # list_max_show_all = 2
+    # list_per_page = 1
+    # fields = ('name', 'email')
+
+    def cancel_orders(self, request, queryset):
+        queryset.update(order_status=Order.CANCELLED)
+    cancel_orders.short_description = "Mark selected orders as cancelled"
+
 # admin.site.register(Post) # OR 1
 # admin.site.register(PostAdmin) # OR 1
 

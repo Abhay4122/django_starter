@@ -257,14 +257,14 @@ tr.alt {
 }
 
 tr:nth-child(odd), .row-form-errors {
-    background: #fff;
+    background: #fff5;
 }
 
 tr:nth-child(even),
 tr:nth-child(even) .errorlist,
 tr:nth-child(odd) + .row-form-errors,
 tr:nth-child(odd) + .row-form-errors .errorlist {
-    background: #f9f9f9;
+    background: #CEECF077;
 }
 
 /* SORTABLE TABLES */

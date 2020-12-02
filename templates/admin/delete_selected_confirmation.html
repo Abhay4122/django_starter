@@ -10,7 +10,7 @@
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation delete-selected-confirmation{% endblock %}
 
 {% block breadcrumbs %}
-<div class="alert alert-info text-right">
+<div class="alert alert-info mb-0 text-right">
 <a href="{% url 'admin:index' %}" class="alert-link">{% translate 'Home' %}</a>
 &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}" class="alert-link">{{ opts.app_config.verbose_name }}</a>
 &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}" class="alert-link">{{ opts.verbose_name_plural|capfirst }}</a>

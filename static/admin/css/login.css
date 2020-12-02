@@ -1,7 +1,8 @@
 /* LOGIN FORM */
 
 .login {
-    background: #ffffff;
+    background: url('/static/admin/img/web/manag-clients-bg.svg') left no-repeat;
+    background-size: 1500px 1500px;
     height: auto;
 }
 
