@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student
+from .models import Student, User
 
 # Register your models here.
 
@@ -8,8 +8,26 @@ class apiAdminArea(admin.AdminSite):
 
 api_admin = apiAdminArea(name='apiAdmin')
 
-class StudentAdmin(admin.ModelAdmin):
+class StudentConfig(admin.ModelAdmin):
+    search_fields = ('name', 'email')
+    ordering = ('-doj',)
+    list_filter = ('doj',)
     list_display = ('name', 'email', 'contact', 'address')
 
 
-api_admin.register(Student, StudentAdmin)
+api_admin.register(Student, StudentConfig)
+
+admin.site.register(Student, StudentConfig)
+
+
+class UserConfig(admin.ModelAdmin):
+    ordering = ('-doj',)
+    list_display = ('email', 'name', 'contact', 'is_staff')
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Personal', {'fields': ('name', 'contact')}),
+    )
+
+
+admin.site.register(User, UserConfig)
