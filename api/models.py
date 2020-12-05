@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **other)
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password, **other):
@@ -31,14 +31,18 @@ class UserManager(BaseUserManager):
         if other.get('is_superuser') is not True:
             raise ValueError(_('Superuser must be assigned to is_superuser = True'))
 
-        return self.create_user(email, password, **other)
+        user = self.model(email=self.normalize_email(email), **other)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     email = models.EmailField(_('email address'), max_length=150, unique=True)
     name = models.CharField(_('name'), max_length=150)
     contact = models.CharField(_('contact'), max_length=15, null=True, blank=True)
+    bio = models.TextField(_('about user'), max_length=500, blank=True, null=True)
     is_staff = models.BooleanField(_('staff status'), default=False)
     is_active = models.BooleanField(_('active'), default=False)
     doj = models.DateTimeField(_('date joined'), default=timezone.now)
@@ -46,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []    # ask fields in CLI when createsuperuser command run
+    REQUIRED_FIELDS = []    # ask fields in CLI when createsuperuser command run. Email & Password are required by default.
 
     def __str__(self):
         return self.email

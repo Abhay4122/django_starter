@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import Student, User
+from .forms import UserAdminChangeForm, UserAdminCreationForm
 
 # Register your models here.
 
@@ -20,14 +22,21 @@ api_admin.register(Student, StudentConfig)
 admin.site.register(Student, StudentConfig)
 
 
-class UserConfig(admin.ModelAdmin):
+class UserConfig(BaseUserAdmin):
     ordering = ('-doj',)
     list_display = ('email', 'name', 'contact', 'is_staff')
+    form = UserAdminChangeForm
+    add_form = UserAdminCreationForm
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
-        ('Personal', {'fields': ('name', 'contact')}),
+        ('Personal', {'fields': ('name', 'contact', 'bio')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'user_permissions')}),
     )
-
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2')}
+        ),
+    )
 
 admin.site.register(User, UserConfig)
