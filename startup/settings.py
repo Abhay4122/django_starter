@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -247,3 +248,22 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+
+# # log file
+# LOG_FORMAT = '%(levelname)s - %(asctime)s - %(message)s'
+# TRACK_FILE = BASE_DIR / 'static' / 'user_tracking.log'
+
+# def LOGGER(file, lev_el, msg):
+#     logging.basicConfig(filename=file, level=lev_el, format=LOG_FORMAT)
+#     logger = logging.getLogger()
+#     if lev_el == 10:
+#         logger.debug(msg)
+#     if lev_el == 20:
+#         logger.info(msg)
+#     if lev_el == 30:
+#         logger.warning(msg)
+#     if lev_el == 40:
+#         logger.error(msg)
+#     if lev_el == 50:
+#         logger.critical(msg)

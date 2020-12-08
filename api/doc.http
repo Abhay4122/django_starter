@@ -1,0 +1,7 @@
+# GET all student details
+GET http://127.0.0.1:8000/api/student
+
+###
+
+# GET specific student detail
+GET http://127.0.0.1:8000/api/student?id=1

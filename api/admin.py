@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import Student, User
 from .forms import UserAdminChangeForm, UserAdminCreationForm
+import django.apps
 
 # Register your models here.
 
@@ -40,3 +41,13 @@ class UserConfig(BaseUserAdmin):
     )
 
 admin.site.register(User, UserConfig)
+
+admin.site.register(django.contrib.admin.models.LogEntry)
+# admin.site.unregister(django.contrib.auth.models.User)
+
+# models = django.apps.apps.get_models()
+# for model in models:
+#     try:
+#         admin.site.register(model)
+#     except admin.sites.AlreadyRegistered:
+#         pass
