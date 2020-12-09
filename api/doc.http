@@ -1,7 +1,62 @@
-# GET all student details
-GET http://127.0.0.1:8000/api/student
+@hostname = http://127.0.0.1
+@port = 8000
+@host = {{hostname}}:{{port}}
+@baseUrl = {{host}}/api
+@contentType = application/json
 
-###
 
-# GET specific student detail
-GET http://127.0.0.1:8000/api/student?id=1
+# @name authLogin
+POST {{baseUrl}}/token/ HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "username": "admin@gmail.com",
+  "password": "admin"
+}
+
+### GET token
+
+@authToken = {{authLogin.response.body.token}}
+
+### GET all student details
+
+GET {{baseUrl}}/student
+Authorization: token {{authToken}}
+content-type: {{contentType}}
+
+### GET specific student detail
+
+GET {{baseUrl}}/student?id=1
+Authorization: token {{authToken}}
+content-type: {{contentType}}
+
+### Add student
+
+POST {{baseUrl}}/student
+Authorization: token {{authToken}}
+content-type: {{contentType}}
+
+{
+  "name": "Lallu lal",
+  "email": "lallu4122@gmail.com",
+  "contact": "3333333333",
+  "address": "gundgav"
+}
+
+### Delete student
+
+DELETE {{baseUrl}}/student?id=1
+Authorization: token {{authToken}}
+
+### Update student
+
+PUT {{baseUrl}}/student?id=6
+Authorization: token {{authToken}}
+content-type: {{contentType}}
+
+{
+  "name": "Lallu lal",
+  "email": "lallu4122@gmail.com",
+  "contact": "66666666",
+  "address": "gundgav"
+}

@@ -29,14 +29,20 @@ class student(APIView):
 
     def put(self, request, *args, **kwargs):
         if bool(dict(request.GET)):
-            std = Student.objects.get(id=request.GET['id'])
-            serializer = StudentSerializer(std, data=request.data)
-
-            if serializer.is_valid():
-                serializer.save()
-                resp = serializer.data
+            std = Student.objects.filter(id=request.GET['id'])
+            if std.exists():
+                serializer = StudentSerializer(std[0], data=request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    resp = serializer.data
+                else:
+                    resp = serializer.errors
             else:
-                resp = serializer.errors
+                msg = 'Student has been not found.'
+                resp = {
+                    **{'status': status.HTTP_404_NOT_FOUND},
+                    **resp_fun(msg, '', 'error')
+                }
         else:
             msg = 'Student id has been not found.'
             resp = {
@@ -48,13 +54,20 @@ class student(APIView):
 
     def delete(self, request, *args, **kwargs):
         if bool(dict(request.GET)):
-            std = Student.objects.get(id=request.GET['id'])
-            std.delete()
-            msg = f'Student {std.name} had been deleted successfully.'
-            resp = {
-                **{'status': status.HTTP_200_OK},
-                **resp_fun(msg, '', 'success')
-            }
+            std = Student.objects.filter(id=request.GET['id'])
+            if std.exists():
+                std[0].delete()
+                msg = f'Student {std[0].name} had been deleted successfully.'
+                resp = {
+                    **{'status': status.HTTP_200_OK},
+                    **resp_fun(msg, '', 'success')
+                }
+            else:
+                msg = 'Student has been not found.'
+                resp = {
+                    **{'status': status.HTTP_404_NOT_FOUND},
+                    **resp_fun(msg, '', 'error')
+                }
         else:
             msg = 'Student id has been not found.'
             resp = {
