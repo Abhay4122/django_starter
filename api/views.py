@@ -9,7 +9,7 @@ from core.custom import prin, resp_fun
 
 
 class student(APIView):
-    permission_classes = (IsAuthenticated, )
+    # permission_classes = (IsAuthenticated, )
 
     def get(self, request, *args, **kwargs):
         if bool(dict(request.GET)):

@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/token/', obtain_auth_token, name='obtain-token'),
+    # path('admin/doc/', include('django.contrib.admindocs.urls')),
 ]
 
 # could be change
