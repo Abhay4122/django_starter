@@ -29,10 +29,6 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
-# Allows any client access.
-# CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:3000']
-
 
 # Application definition
 
@@ -190,6 +186,10 @@ if DEBUG:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+    # Allows any client access.
+    # CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:3000', 'http://localhost:3000']
 else:
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True

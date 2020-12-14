@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import Page from "./Page"
 import Axios from "axios"
+import Swal from "sweetalert2"
+import { withRouter } from "react-router-dom"
+import ExampleContext from "../ExampleContext"
 
-function HomeGuest() {
+function HomeGuest(props) {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [contact, setContact] = useState()
   const [address, setAddress] = useState()
+  const addFlashMessage = useContext(ExampleContext)
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      const response = await Axios.post("http://127.0.0.1:8000/api/student", { name: name, email: email, contact: contact, address: address })
-      console.log(response.data)
+      const response = await Axios.post("student", { name: name, email: email, contact: contact, address: address })
+      addFlashMessage("Student has been added!")
+      // Swal.fire("Success", "Successfully Added!", "success")
+      // Redirect to new post url
+      props.history.push(`/view-data/${response.data}`)
     } catch (e) {
-      console.log("User Not Created Success")
+      Swal.fire("Oops...", "Something went wrong!", "error")
     }
   }
 
@@ -61,4 +68,4 @@ function HomeGuest() {
   )
 }
 
-export default HomeGuest
+export default withRouter(HomeGuest)

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Axios from "axios"
+import Swal from "sweetalert2"
 
 function HeaderLoggedOut(props) {
   const [username, setUsername] = useState()
@@ -8,11 +9,12 @@ function HeaderLoggedOut(props) {
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      const response = await Axios.post("http://127.0.0.1:8000/api/token/", { username: username, password: password })
+      const response = await Axios.post("token/", { username: username, password: password })
       props.setLoggedIn(true)
       localStorage.setItem("token", response.data.token)
+      Swal.fire("Success", "Successfully login!", "success")
     } catch (e) {
-      console.log("Login not successfull")
+      Swal.fire("Oops...", "Please check username and password!", "error")
     }
   }
 
