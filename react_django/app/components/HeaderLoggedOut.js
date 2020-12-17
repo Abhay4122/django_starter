@@ -1,18 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Axios from "axios"
 import Swal from "sweetalert2"
+import DispatchContext from "../DispatchContext"
 
 function HeaderLoggedOut(props) {
+  const appDispatch = useContext(DispatchContext)
+
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
+  // const { setLoggedIn, addFlashMessage } = useContext(DispatchContext)
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
       const response = await Axios.post("token/", { username: username, password: password })
-      props.setLoggedIn(true)
+      appDispatch({ type: "login" })
       localStorage.setItem("token", response.data.token)
-      Swal.fire("Success", "Successfully login!", "success")
+      appDispatch({ type: "flashMessage", value: "Successfully login!" })
+      // Swal.fire("Success", "Successfully login!", "success")
     } catch (e) {
       Swal.fire("Oops...", "Please check username and password!", "error")
     }

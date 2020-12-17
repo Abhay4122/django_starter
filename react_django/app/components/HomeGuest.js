@@ -3,20 +3,20 @@ import Page from "./Page"
 import Axios from "axios"
 import Swal from "sweetalert2"
 import { withRouter } from "react-router-dom"
-import ExampleContext from "../ExampleContext"
+import DispatchContext from "../DispatchContext"
 
 function HomeGuest(props) {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [contact, setContact] = useState()
   const [address, setAddress] = useState()
-  const addFlashMessage = useContext(ExampleContext)
+  const appDispatch = useContext(DispatchContext)
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
       const response = await Axios.post("student", { name: name, email: email, contact: contact, address: address })
-      addFlashMessage("Student has been added!")
+      appDispatch({ type: "flashMessage", value: "Student has been added!" })
       // Swal.fire("Success", "Successfully Added!", "success")
       // Redirect to new post url
       props.history.push(`/view-data/${response.data}`)
