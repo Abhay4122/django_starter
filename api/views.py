@@ -6,10 +6,13 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import *
 from .models import *
 from core.custom import prin, resp_fun
+from django.db import connection
 
 
 class student(APIView):
     # permission_classes = (IsAuthenticated, )
+
+    CURSOR = connection.cursor()
 
     def get(self, request, *args, **kwargs):
         if bool(dict(request.GET)):
@@ -23,7 +26,11 @@ class student(APIView):
                     **resp_fun(msg, '', 'error')
                 }
         else:
-            resp = StudentSerializer(Student.objects.all(), many=True).data
+            # resp = StudentSerializer(Student.objects.all(), many=True).data
+            query = 'select name, email, contact, address from api_student'
+            self.CURSOR.execute(query)
+            resp = self.CURSOR.fetchall()
+
 
         return Response(resp)
 
