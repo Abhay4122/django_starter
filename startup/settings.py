@@ -14,6 +14,7 @@ from pathlib import Path
 from decouple import config
 import logging
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -138,6 +139,20 @@ REST_FRAMEWORK = {
 }
 
 
+# Redis caching
+CACHE_TTL = 60 * 1500
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'KEY_PREFIX': 'example'
+    }
+}
+
+
 if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
@@ -190,6 +205,19 @@ if DEBUG:
     # Allows any client access.
     # CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:3000', 'http://localhost:3000']
+
+    # Usecase of sentry
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    sentry_sdk.init(
+        dsn="https://cb77a62bc4c443288d0a6ee5166e91b8@o497014.ingest.sentry.io/5572540",
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
 else:
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
