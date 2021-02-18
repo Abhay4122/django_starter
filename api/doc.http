@@ -26,7 +26,7 @@ content-type: {{contentType}}
 
 ### GET specific student detail
 
-GET {{baseUrl}}/student?id=1
+GET {{baseUrl}}/student?id=27
 Authorization: token {{authToken}}
 content-type: {{contentType}}
 
@@ -59,4 +59,18 @@ content-type: {{contentType}}
   "email": "lallu4122@gmail.com",
   "contact": "66666666",
   "address": "gundgav"
+}
+
+
+
+### Get records from GP api
+
+POST {{baseUrl}}/hes/verticals_health_info
+# Authorization: token {{authToken}}
+content-type: {{contentType}}
+
+{
+  "down_factor" : 4,
+  "csrftoken" : "QdnL4I970mSsd5ywA9HwA7g9Mt7zfSxg",
+  "sessionid" : "pomadnc87ddpi1fhf3vcotjmh7s32snz"
 }

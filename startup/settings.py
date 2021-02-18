@@ -14,6 +14,7 @@ from pathlib import Path
 from decouple import config
 import logging
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -138,6 +139,23 @@ REST_FRAMEWORK = {
 }
 
 
+# Redis caching
+CACHE_TTL = 60 * 1500
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'KEY_PREFIX': 'example'
+    }
+}
+
+# Setup celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379' 
+
+
 if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
@@ -176,43 +194,60 @@ if DEBUG:
         'SQL_WARNING_THRESHOLD': 100,
     }
 
-
-    # Database
-    # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
     # Allows any client access.
     # CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:3000', 'http://localhost:3000']
+
+    # Usecase of sentry
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    sentry_sdk.init(
+        dsn="https://cb77a62bc4c443288d0a6ee5166e91b8@o497014.ingest.sentry.io/5572540",
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
 else:
-    SESSION_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_REDIRECT_EXEMPT = []
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    INSTALLED_APPS += [
+        'django_extensions',
+    ]
+    # SESSION_COOKIE_SECURE = True
+    # SECURE_BROWSER_XSS_FILTER = True
+    # SECURE_CONTENT_TYPE_NOSNIFF = True
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_SECONDS = 31536000
+    # SECURE_REDIRECT_EXEMPT = []
+    # SECURE_SSL_REDIRECT = True
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    ALLOWED_HOSTS = ['www.domain.com']
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    # ALLOWED_HOSTS = ['www.domain.com']
+    # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
-            'PORT': config('DB_PORT', cast=int),
-        }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': config('DB_NAME'),
+    #         'USER': config('DB_USER'),
+    #         'PASSWORD': config('DB_PASSWORD'),
+    #         'HOST': config('DB_HOST'),
+    #         'PORT': config('DB_PORT', cast=int),
+    #     }
+    # }
+
+
+
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
 
 
 CKEDITOR_CONFIGS = {
