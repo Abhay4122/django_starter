@@ -41,7 +41,7 @@ class PostAdmin(admin.ModelAdmin):
     # )
     # fields = ['title']
 
-@admin.register(student)
+@admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'contact', 'address')
     actions = ('cancel_orders', )
